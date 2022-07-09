@@ -12,7 +12,11 @@ const Contact = (props) => {
   return (
     <section
       class="ftco-section "
-      style={{ backgroundColor: "#F8F9FA", marginTop: "30px" }}
+      style={{
+        backgroundColor: "#F8F9FA",
+        marginTop: "30px",
+        paddingBottom: "30px",
+      }}
     >
       <div
         class="container"

@@ -447,12 +447,18 @@ p {
   text-transform: capitalize;
   letter-spacing: var(--mainSpacing);
 }
+.room-extras-noObj {
+  display: flex;
+  padding: "10px 30px";
+}
 .extras {
-  list-style-type: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   grid-column-gap: 2rem;
   grid-row-gap: 1rem;
+}
+.extras li {
+  list-style-type: disc;
 }
 @media screen and (min-width: 992px) {
   .single-room-images,
@@ -645,12 +651,12 @@ p {
 /* end footer*/
 /* page transition */
 
-.page {
+/* .page {
   position: absolute;
   top: 60px;
   left: 0;
   right: 0;
-}
+} */
 
 .fade-appear .fade-enter {
   opacity: 0;

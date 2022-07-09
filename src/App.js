@@ -9,6 +9,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Project from "./pages/singleProject";
 import Contact from "./pages/contact";
 import Prices from "./pages/prices";
+import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
@@ -31,6 +32,7 @@ class App extends Component {
             </TransitionGroup>
           )}
         />
+        <Footer />
       </div>
     );
   }

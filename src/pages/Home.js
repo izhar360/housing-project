@@ -4,7 +4,6 @@ import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import Services from "../components/Services";
 import CurrentOffers from "../components/CurrentOffers";
-import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -21,7 +20,6 @@ const Home = () => {
       </Hero>
       <Services />
       <CurrentOffers />
-      <Footer />
     </div>
   );
 };

@@ -4,7 +4,6 @@ import defaultBg from "../images/room-1.jpeg";
 import Banner from "../components/Banner";
 import { Link, useParams } from "react-router-dom";
 import StyledHero from "../components/StyledHero";
-import Footer from "../components/Footer";
 import { projects } from "../data";
 import Title from "../components/Title";
 import useWindowDimensions from "../components/usewindow";
@@ -61,7 +60,6 @@ const Prices = (props) => {
         <img src={project.pay3} width="100%" height="100%" />
         <img src={project.pay4} width="100%" height="100%" />
       </div>
-      <Footer />
     </div>
   );
 };

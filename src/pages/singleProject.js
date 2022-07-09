@@ -1,20 +1,23 @@
+/*global google*/
 import React, { useEffect, useState } from "react";
 import defaultBg from "../images/room-1.jpeg";
 //import Hero from "../components/Hero";
 import Banner from "../components/Banner";
 import { Link, useParams } from "react-router-dom";
 import StyledHero from "../components/StyledHero";
-import Footer from "../components/Footer";
 import { projects } from "../data";
+import { Map, GoogleApiWrapper } from "google-maps-react";
+import useWindowDimensions from "../components/usewindow";
 
 /**
  * @author
  * @function Project
  **/
 
-const Project = (props) => {
+export const Project = (props) => {
   let { slug } = useParams();
   const [project, setProject] = useState();
+  const { width } = useWindowDimensions();
 
   console.log(slug);
 
@@ -36,7 +39,24 @@ const Project = (props) => {
     );
   }
 
-  const { name, picture } = project;
+  const {
+    name,
+    picture,
+    description,
+    location,
+    Facilities,
+    blocks,
+    Accessibility,
+    Requirements,
+    noObjCertificate,
+    Possession,
+  } = project;
+
+  const mapStyles = {
+    width: width > 576 ? "70vw" : "90vw",
+    height: width > 576 ? "60vh" : "40vh",
+    margin: "0 auto",
+  };
 
   return (
     <div className="page">
@@ -69,46 +89,76 @@ const Project = (props) => {
         <div className="single-room-info">
           <article className="desc">
             <h3>details</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              gravida pharetra libero nec fringilla. Vivamus vitae finibus diam.
-              Praesent vel turpis eget est euismod pharetra ut varius tortor.
-              Pellentesque vitae nibh nec arcu dictum ornare. Maecenas interdum
-              eros augue, et congue turpis laoreet sed. Morbi posuere velit id
-              nulla rutrum, nec aliquet justo sodales. Phasellus tristique,
-              risus id blandit iaculis, ipsum felis commodo sem, a ornare ligula
-              risus vitae neque. Fusce non augue vehicula, dapibus nulla ut,
-              imperdiet justo. Nunc congue nunc eget finibus pretium. Maecenas
-              lobortis, purus eu suscipit laoreet, nisi diam consequat justo,
-              sed sodales erat lacus vitae dui. Vivamus vestibulum libero ipsum,
-              sit amet posuere mauris aliquam eu.
-            </p>
+            <p>{description}</p>
           </article>
           <article className="info">
-            <h3>info</h3>
-            <h6>XYZ : 20000 PLN</h6>
-            <h6>
-              size : 20 acres<sup>2</sup>
-            </h6>
+            <h3>location</h3>
+            <p>{location}</p>
           </article>
         </div>
+      </section>
+      <section
+        style={{
+          height: width > 576 ? "60vh" : "40vh",
+          margin: width > 576 ? "50px 0" : "40px 0",
+        }}
+      >
+        <Map
+          google={props.google}
+          zoom={14}
+          style={mapStyles}
+          initialCenter={{
+            lat: -1.2884,
+            lng: 36.8233,
+          }}
+        />
       </section>
       <section className="room-extras">
         <h6>extras</h6>
         <ul className="extras">
-          <li>- Plush pillows and breathable bed linens</li>
-          <li>- Adequate safety/security</li>
-          <li>- Full-sized, pH-balanced toiletries</li>
-          <li>- Comfortable jets</li>
-          <li>- Free Money</li>
-          {/* {extras.map((item, index) => {
-              return <li key={index}>- {item}</li>;
-            })} */}
+          {Facilities.map((item, index) => {
+            return <li key={index}>{item}</li>;
+          })}
         </ul>
       </section>
-      <Footer />
+
+      <section className="room-extras">
+        <h6>Blocks</h6>
+        <ul className="extras">
+          {blocks.map((item, index) => {
+            return <li key={index}>{item}</li>;
+          })}
+        </ul>
+      </section>
+
+      <section className="room-extras">
+        <h6>Accessibility</h6>
+        <ul className="extras">
+          {Accessibility.map((item, index) => {
+            return <li key={index}>{item}</li>;
+          })}
+        </ul>
+      </section>
+
+      <section className="room-extras">
+        <h6>Requirements</h6>
+        <ul className="extras">
+          {Requirements.map((item, index) => {
+            return <li key={index}>{item}</li>;
+          })}
+        </ul>
+      </section>
+
+      <section className="room-extras">
+        <h6>No Objection Certificate:</h6>
+        <p>{noObjCertificate}</p>
+        <h6 style={{ marginTop: "15px" }}>Possession:</h6>
+        <p>{Possession}</p>
+      </section>
     </div>
   );
 };
 
-export default Project;
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyBaTmON11bTlCn2_pSwArGhuHJCrAtMdp0",
+})(Project);
