@@ -9,16 +9,13 @@ import ScrollToTop from "./components/scrollToTop";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { RoomProvider } from "./context";
 
 ReactDOM.render(
-  <RoomProvider>
-    <BrowserRouter>
-      <ScrollToTop>
-        <Route path="/" component={App} />
-      </ScrollToTop>
-    </BrowserRouter>
-  </RoomProvider>,
+  <BrowserRouter>
+    <ScrollToTop>
+      <Route path="/" component={App} />
+    </ScrollToTop>
+  </BrowserRouter>,
 
   document.getElementById("root")
 );

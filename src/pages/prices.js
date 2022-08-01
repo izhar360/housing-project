@@ -38,7 +38,7 @@ const Prices = (props) => {
     );
   }
 
-  const { name, picture } = project;
+  const { name, picture, pay1, pay2, pay3, pay4, pay5, pay6 } = project;
 
   return (
     <div>
@@ -55,10 +55,12 @@ const Prices = (props) => {
       </div>
 
       <div className="prices-div">
-        <img src={project.pay1} width="100%" height="100%" />
-        <img src={project.pay2} width="100%" height="100%" />
-        <img src={project.pay3} width="100%" height="100%" />
-        <img src={project.pay4} width="100%" height="100%" />
+        {pay1 && <img src={pay1} width="100%" height="100%" />}
+        {pay2 && <img src={pay2} width="100%" height="100%" />}
+        {pay3 && <img src={pay3} width="100%" height="100%" />}
+        {pay4 && <img src={pay4} width="100%" height="100%" />}
+        {pay5 && <img src={pay5} width="100%" height="100%" />}
+        {pay6 && <img src={pay6} width="100%" height="100%" />}
       </div>
     </div>
   );

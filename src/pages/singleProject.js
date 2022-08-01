@@ -44,12 +44,14 @@ export const Project = (props) => {
     picture,
     description,
     location,
+    companyWebsite,
     Facilities,
     blocks,
     Accessibility,
     Requirements,
     noObjCertificate,
     Possession,
+    ProjectDuration,
   } = project;
 
   const mapStyles = {
@@ -64,6 +66,9 @@ export const Project = (props) => {
         <Banner title={`${name}`}>
           <Link to="/" className="btn-primary">
             Go Back
+          </Link>
+          <Link to={`/prices/${slug}`} className="btn-primary ml-3">
+            Prices
           </Link>
         </Banner>
       </StyledHero>
@@ -122,14 +127,16 @@ export const Project = (props) => {
         </ul>
       </section>
 
-      <section className="room-extras">
-        <h6>Blocks</h6>
-        <ul className="extras">
-          {blocks.map((item, index) => {
-            return <li key={index}>{item}</li>;
-          })}
-        </ul>
-      </section>
+      {blocks && (
+        <section className="room-extras">
+          <h6>Blocks</h6>
+          <ul className="extras">
+            {blocks.map((item, index) => {
+              return <li key={index}>{item}</li>;
+            })}
+          </ul>
+        </section>
+      )}
 
       <section className="room-extras">
         <h6>Accessibility</h6>
@@ -152,8 +159,24 @@ export const Project = (props) => {
       <section className="room-extras">
         <h6>No Objection Certificate:</h6>
         <p>{noObjCertificate}</p>
-        <h6 style={{ marginTop: "15px" }}>Possession:</h6>
-        <p>{Possession}</p>
+        {Possession && (
+          <div className="mt-4">
+            <h6 style={{ marginTop: "15px" }}>Possession:</h6>
+            <p>{Possession}</p>
+          </div>
+        )}
+        {ProjectDuration && (
+          <div className="mt-4">
+            <h6 style={{ marginTop: "15px" }}>Project Start and End Date:</h6>
+            <p>{ProjectDuration}</p>
+          </div>
+        )}
+        {companyWebsite && (
+          <div className="mt-4">
+            <h6 style={{ marginTop: "15px" }}>Company Website:</h6>
+            <a href={companyWebsite}>{companyWebsite}</a>
+          </div>
+        )}
       </section>
     </div>
   );
